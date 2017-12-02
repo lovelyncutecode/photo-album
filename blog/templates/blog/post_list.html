@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12" align="center">
+                <div>
+                    <h1>Yer feed, gal XX</h1>
+                    <a class='btn btn-primary' href="{% url 'add_post' %}" class="top-menu">Add post</a>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+
+        <div class="row justify-content-center">
+
+
+
+
+            {% for post in posts %}
+            <div>
+                <div class="card" style="width: 21rem;">
+                  
+                  {% if post.ext == 'jpg' %}
+                    <img class="card-img-top" src="{{MEDIA_URL}}{{post.photo}}" alt="Card image cap" width="335px">
+                  {%elif post.ext == 'mp4' %}
+                    <video width="320" height="240" controls>
+                      <source src="{{MEDIA_URL}}{{post.photo}}" type="video/mp4">
+                    </video>
+                  {%endif%} 
+                    <div class="card-block">
+                        <p class="card-author">{{ post.author}}</p>
+                        <h4 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title}}</a></h4>
+                        <p class="card-text">{{ post.text}}</p>
+                        <p class="card-date">{{ post.date}}</p>
+                        <a href="#" class="btn btn-primary">Like</a>
+                    </div>
+                  
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{%endblock%}

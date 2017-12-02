@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <title>New post</title>
+        <style >
+            .formUp {
+                margin-left: 10px; 
+            }
+        </style>
+    
+    	<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12" align="center">
+        <div>
+   		 <h1>Show yer pwrrr 2 the world, grrl!</a></h1>
+		</div>
+        </div>
+</div>
+</div>
+
+        <div class="formUp">
+            
+            <form name="post" class="link-form" method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <small id="fileHelp" class="form-text text-muted">Load media via link:</small>
+                {{ form.as_p }}
+            <input type="submit" value="Post">
+        </form>
+    </div>
+
+   {%endblock%}
+
