@@ -34,7 +34,7 @@ def getMediaByLink(ref):
 	
 	
 	
-	#print(photo)
+	
 	photoDescrDate=[photo,des,date]
 
 	return photoDescrDate

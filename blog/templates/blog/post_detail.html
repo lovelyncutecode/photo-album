@@ -1,32 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-        <title>Details</title>
-         <style >
-            .c {
-                margin-left: 10px; 
-            }
-        </style>
-   
-    	<div class="c">
-   		 <h1>Yer post, gal</h1></div>
-         <div  class="c"">
-        <h1>{{ post.title }}</h1>
-        {%if user == post.author %}
-        <a class='btn btn-primary' href="{% url 'post_edit' pk=post.pk %}" class="top-menu" >Edit</a>
-        <a class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}" class="top-menu"  disabled >Delete</a>{%endif%}
-        <br> <br>
-        {% if post.ext == 'jpg' %}
-            <img class="card-img-top" src="{{MEDIA_URL}}{{post.photo}}" alt="Card image cap" width="335px">
-        {%elif post.ext == 'mp4' %}
-            <video width="320" height="240" controls>
-            <source src="{{MEDIA_URL}}{{post.photo}}" type="video/mp4">
-            </video>
-        {%endif%} 
-        <p>{{ post.author|linebreaksbr }}</p>
-        <p>{{ post.text|linebreaksbr }}</p>
-        
-        <p>published: {{ post.date }}</p>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <title>Details</title>
+    <style>
+        .c {
+            margin-left: 10px;
+        }
+    </style>
+
+    <div class="c">
+        <h1>Yer post, gal</h1>
     </div>
-     {%endblock%}
+    <div class="c" ">
+            <h1>{{ post.title }}</h1>
+            {%if user == post.author %}
+            <a class='btn btn-primary' href="{% url 'post_edit' pk=post.pk %} " class="top-menu " >Edit</a>
+            <a class="btn btn-primary " href="{% url 'post_remove' pk=post.pk %} " class="top-menu "  disabled >Delete</a>{%endif%}
+            <br> <br>
+            {% if post.ext == 'jpg' %}
+                <img class="card-img-top " src="{{MEDIA_URL}}{{post.photo}} " alt="Card image cap " width="335px ">
+            {%elif post.ext == 'mp4' %}
+                <video width="320 " height="240 " controls>
+                <source src="{{MEDIA_URL}}{{post.photo}} " type="video/mp4 ">
+                </video>
+            {%endif%} 
+            <p>{{ post.author|linebreaksbr }}</p>
+            <p>{{ post.text|linebreaksbr }}</p>
+            
+            <p>published: {{ post.date }}</p>
+    </div>
+{%endblock%}

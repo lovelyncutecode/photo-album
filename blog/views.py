@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
 from django.utils import timezone
 from .models import Post
 from django.db import models
@@ -40,12 +39,12 @@ def add_link(request):
         userLink=request.POST['link']
         photoDescrDate=inst.getMediaByLink(userLink)
         name = photoDescrDate[0][-30:]
-        #ph=urllib.request.urlretrieve(photoDescrDate[0], '.'+settings.MEDIA_URL+name)
+        
         response =urllib.request.urlopen(photoDescrDate[0])
         io = BytesIO(response.read()) 
         print(photoDescrDate[0])
         post=Post( title='From Instagram',text=photoDescrDate[1],date=photoDescrDate[2],author=request.user )
-        #content = urllib.request.urlretrieve(photoDescrDate[0])
+        
         post.photo.save(name, File(io), save=True)
     
 
